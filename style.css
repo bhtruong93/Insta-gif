@@ -1,0 +1,14 @@
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+}
+video {
+    width: 800px;
+    height: 600px;
+}
+.container {
+    text-align: center;
+}
+button {
+    margin: 15px;
+}
