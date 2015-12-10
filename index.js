@@ -40,7 +40,6 @@ record[0].addEventListener("click", function() {
             var image = obj.image;
             console.log(image);
             newGIF = dataURItoBlob(image);
-
             saveGIF.href = image;
             btnArray.forEach(function(btn) {
                 btn.style.opacity = 1;
