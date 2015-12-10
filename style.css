@@ -3,8 +3,15 @@ body {
     font-weight: 200;
 }
 video {
-    width: 800px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    display: inline-block;
+}
+img {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    display: inline-block;
 }
 .container {
     text-align: center;
