@@ -9,6 +9,10 @@
   "background":{
     "page":"popup.html"
   },
+  "content_scripts": [{
+      "matches": ["http://*/*","https://*/*"],
+      "js": ["jquery-2.1.4.min.js","index.js"]
+  }],
   "permissions": [
     "tabs",
     "activeTab",

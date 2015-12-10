@@ -5,7 +5,8 @@ var saveGIF = document.getElementById('saveGIF');
 var postGIF = document.getElementById('postGIF');
 var recordGIF = document.getElementById('recordGIF');
 var btnArray = [recordGIF, saveGIF, postGIF];
-
+var newGIF;
+console.log($);
 record[0].addEventListener("click", function() {
     var inputs = document.getElementsByTagName('input');
     var text = inputs[0];
@@ -37,6 +38,9 @@ record[0].addEventListener("click", function() {
         if(!obj.error) {
             webCam.style.display = "none";
             var image = obj.image;
+            console.log(image);
+            newGIF = dataURItoBlob(image);
+
             saveGIF.href = image;
             btnArray.forEach(function(btn) {
                 btn.style.opacity = 1;
@@ -69,8 +73,57 @@ function videoError(e) {
     // do something
 }
 
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+}
+
 var slackButton = document.getElementsByClassName('btn-default')[0];
 slackButton.addEventListener("click", function() {
-    console.log('here');
-    console.log(request);
+
+    $.ajax({
+      type: "POST",
+      url: "https://slack.com/oauth/authorize",
+      data: JSON.stringify({
+        client_id: 13532050355.16339300902,
+        scope: "chat:write:user",
+        redirect_uri: "chrome-extension://lplpdamannhgogjmebmoencploejbckg/index.html",
+      }),
+      success: function() {
+        console.log("it's posted!");
+      },
+      error: function(error) {
+        console.log("didn't work", error);
+      },
+      dataType: "json"
+    });
+
+
+
+    //
+    //
+    // $.ajax({
+    //   type: "POST",
+    //   url: "https://slack.com/api/files.upload",
+    //   data: JSON.stringify(newGIF),
+    //   success: function() {
+    //     console.log("it's posted!");
+    //   },
+    //   dataType: dataType
+    // });
 });
