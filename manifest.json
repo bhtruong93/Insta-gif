@@ -12,7 +12,7 @@
   },
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],
-    "js": ["jquery-2.1.4.min.js","contentscript.js"]  
+    "js": ["jquery-2.1.4.min.js","contentscript.js"]
     }],
   "permissions": [
     "tabs",

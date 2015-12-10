@@ -49,12 +49,6 @@ function handleVideo(stream) {
 function videoError(e) {
     // do something
 }
-// console.log($);
-
-// $.get('http://www.omdbapi.com/?t=Frozen&y=&plot=short&r=json', function(data) {
-//     console.log(data);
-//   });
-// });
 
 function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
@@ -75,5 +69,3 @@ function dataURItoBlob(dataURI) {
 
     return new Blob([ia], {type:mimeString});
 }
-
-console.log($);
