@@ -10,17 +10,17 @@
  </head>
  <body>
    <div class="container">
-        <button class="btn btn-danger">Record</button>
-        <a href="#" id="saveGIF" download="myGIF.gif">
-          <button type="button" class="btn btn-success" >Save GIF</button>
-        </a>
-        <button class="btn btn-default">Post to Slack</button>
+     <div class="">
+      <button class="btn btn-danger">Record</button>
+      <a href="#" id="saveGIF" download="myGIF.gif">
+        <button type="button" class="btn btn-success" >Save GIF</button>
+      </a>
+      <button class="btn btn-default">Post to Slack</button>
+     </div>
+      <video autoplay="true" id="face"></video>
+     <div id="img-frame"></div>
    </div>
-   <video autoplay="true" id="face"></video>
-   <div id="img-frame">
-
-   </div>
-   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
-   <script type="text/javascript" src="index.js"></script>
+   <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+   <script type="text/javascript" src="contentscript.js"></script>
  </body>
 </html>
