@@ -25,15 +25,15 @@ record[0].addEventListener("click", function() {
         'keepCameraOn': true,
         'numFrames': time.value * 10,
         'gifWidth': 500,
-        'numWorkers': 4,
+        'numWorkers': 6,
         'gifHeight': 350,
         'text': text.value,
         'fontFamily': 'Helvetica',
         'fontSize': '36px',
-        'resizeFont': true,
         'saveRenderingContexts': true
     },
     function(obj) {
+        console.log(obj);
         if(!obj.error) {
             webCam.style.display = "none";
             var image = obj.image;
