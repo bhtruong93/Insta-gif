@@ -1,14 +1,37 @@
 body {
-	font-family: 'Lato', sans-serif;
-	font-weight: 200;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+h1 {
+    font-family: 'Bad Script', cursive;
+    font-size: 48px;
+    margin: 30px;
+
 }
 video {
-	width: 800px;
-	height: 600px;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+img {
+    margin-top: 40px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
 }
 .container {
-	text-align: center;
+    text-align: center;
 }
 button {
-	margin: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 200;
+    margin: 15px;
 }
+#saveGIF, #postGIF {
+    display: none;
+}
+

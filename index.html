@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,200' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'><link href='https://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
+    <link href="style.css" rel="stylesheet">
+    <script type="text/javascript" src="gifshot.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>INSTAGIF!</h1>
+        <div class="input-group col-xs-8 col-xs-offset-2" >
+              <input type="text" class="form-control well well-sm" placeholder="Type your message here">
+              <span style="padding:4px; margin-top:5px"class="col-xs-2 col-xs-offset-4">Seconds:</span><input style="padding:3px; margin-top:5px;" type="number" class="col-xs-2 well" min="1" max="5" step="1" value="1">
+        </div>
+        <div>
+            <button id="recordGIF" class="btn btn-lg btn-danger">Record</button>
+            <a href="#" id="saveGIF" download="myGIF.gif">
+                <button type="button" class="btn btn-lg btn-success" >Save GIF</button>
+            </a>
+            <button id="postGIF" class="btn btn-lg btn-default">Post to Slack</button>
+        </div>
+        <video autoplay="true" id="face"></video>
+        <div id="img-frame"></div>
+    </div>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
