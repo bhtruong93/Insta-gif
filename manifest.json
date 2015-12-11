@@ -6,14 +6,15 @@
   "version": "1.0",
 
   "browser_action": {
+    "default_icon":  "working.png"
   },
+  "content_scripts": [{
+      "matches": ["http://*/*","https://*/*"],
+      "js": ["jquery-2.1.4.min.js","index.js"]
+  }],
   "background": {
     "page": "popup.html"
   },
-  "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
-    "js": ["jquery-2.1.4.min.js","contentscript.js"]
-    }],
   "permissions": [
     "tabs",
     "activeTab",
