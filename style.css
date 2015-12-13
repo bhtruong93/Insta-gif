@@ -30,6 +30,7 @@ button {
     font-family: 'Lato', sans-serif;
     font-weight: 200;
     margin: 15px;
+    
 }
 #saveGIF, #postGIF {
     display: none;

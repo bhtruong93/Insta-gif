@@ -5,13 +5,20 @@
   "description": "Create Gifs and Upload Instantly to Imgur",
   "version": "1.0",
 
-  "browser_action": {},
-  "background":{
-    "page":"popup.html"
+  "browser_action": {
   },
+  "background": {
+    "page": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["jquery-2.1.4.min.js","contentscript.js"]
+    }],
   "permissions": [
     "tabs",
     "activeTab",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+    "https://*/*",
+    "http://*/*"
   ]
 }

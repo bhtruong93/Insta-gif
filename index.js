@@ -23,13 +23,14 @@ record[0].addEventListener("click", function() {
     gifshot.createGIF({
         'webcamVideoElement': document.getElementById("video"),
         'keepCameraOn': true,
-        'numFrames': time.value * 10,
+        'numFrames': '10',
         'gifWidth': 500,
-        'numWorkers': 6,
+        'numWorkers': 4,
         'gifHeight': 350,
         'text': text.value,
         'fontFamily': 'Helvetica',
         'fontSize': '36px',
+        'sampleInterval': '10',
         'saveRenderingContexts': true
     },
     function(obj) {
