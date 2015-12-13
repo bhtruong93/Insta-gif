@@ -7,7 +7,6 @@ var postGIF = document.getElementById('postGIF');
 var recordGIF = document.getElementById('recordGIF');
 var btnArray = [recordGIF, saveGIF];
 var newGIF;
-console.log($);
 record[0].addEventListener("click", function() {
     var inputs = document.getElementsByTagName('input');
     var text = inputs[0];
@@ -26,9 +25,9 @@ record[0].addEventListener("click", function() {
         'webcamVideoElement': document.getElementById("video"),
         'keepCameraOn': true,
         'numFrames': time.value * 10,
-        'gifWidth': 500,
-        'numWorkers': 4,
+        'gifWidth': 425,
         'gifHeight': 350,
+        'numWorkers': 6,
         'text': text.value,
         'fontFamily': 'Helvetica',
         'fontSize': '36px',
@@ -39,29 +38,12 @@ record[0].addEventListener("click", function() {
         if(!obj.error) {
             webCam.style.display = "none";
             var image = obj.image;
-              // $.ajax({
-              //   type: "POST",
-              //   url: "http://data-uri-to-img-url.herokuapp.com/images",
-              //   data: 'image[' + image + ']',
-              //   success: function(data) {
-              //     console.log('here' + data);
-              //   },
-              //   error: function(error) {console.log(error);},
-              //    dataType: "json"
-              // });
 
-            // slackGIF.addEventListener('click', function(event) {
-            //   slackGIF.href = "https://slack.com/api/chat.postMessage?token=xoxp-13532050355-13532050371-16334980115-c6816b3200&channel=%23general&text=%20&attachments=%5B%20%20%20%20%20%20%20%20%20%7B%20%20%20%20%20%20%20%20%20%20%20%20%20%22fallback%22%3A%20%22Error%20uploading%20GIF%20(code%3A1312YAN)%22%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22color%22%3A%20%22%2336a64f%22%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22image_url%22%3A%20%22data%3Aimage%2Fgif%3Bbase64%2CR0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o%2FXBs%2FfNwfjZ0frl3%2Fzy7%2F%2F%2F%2FwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7%22%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%22thumb_url%22%3A%20%22http%3A%2F%2Fexample.com%2Fpath%2Fto%2Fthumb.png%22%20%20%20%20%20%20%20%20%20%7D%20%20%20%20%20%5D&pretty=1";
-            // });
             newGIF = dataURItoBlob(image);
             var urlGIF = URL.createObjectURL(newGIF);
             var fd = new FormData(document.forms[0]);
             fd.append("myFile", newGIF);
-            console.log(fd);
 
-
-
-            console.log(urlGIF);
             saveGIF.href = urlGIF;
             btnArray.forEach(function(btn) {
                 btn.style.opacity = 1;

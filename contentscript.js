@@ -22,7 +22,6 @@ record[0].addEventListener("click", function() {
       webCam.style.display = "none";
       var image = obj.image;
       var newGIF = dataURItoBlob(image);
-      console.log(newGIF);
 
       var saveGIF = document.getElementById('saveGIF');
       saveGIF.href = image;
