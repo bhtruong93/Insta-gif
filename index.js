@@ -1,14 +1,15 @@
-var record = document.getElementsByClassName('btn-danger');
 var webCam = document.getElementById('face');
 var container = document.getElementById('img-frame');
+var recordGIF = document.getElementById('recordGIF');
 var saveGIF = document.getElementById('saveGIF');
 var postGIF = document.getElementById('postGIF');
 // var slackGIF = document.getElementById('slackGIF');
-var recordGIF = document.getElementById('recordGIF');
 var btnArray = [recordGIF, saveGIF];
 var newGIF;
-if(record[0]){
-  record[0].addEventListener("click", function() {
+var timerLabel = document.getElementById('timer-label');
+
+if(recordGIF){
+  recordGIF.addEventListener("click", function() {
     var inputs = document.getElementsByTagName('input');
     var text = inputs[0];
     var time = inputs[1];
@@ -19,41 +20,43 @@ if(record[0]){
     webCam.style.display = "inline-block";
 
     btnArray.forEach(function(btn) {
-      btn.style.opacity = 0.3;
+        btn.disabled = true;
     });
+    saveGIF.children[0].disabled = true;
 
     gifshot.createGIF({
-      'webcamVideoElement': document.getElementById("video"),
-      'keepCameraOn': true,
-      'numFrames': time.value * 10,
-      'gifWidth': 425,
-      'gifHeight': 350,
-      'numWorkers': 6,
-      'text': text.value,
-      'fontFamily': 'Helvetica',
-      'fontSize': '36px',
-      'resizeFont': true,
-      'saveRenderingContexts': true
+        'webcamVideoElement': document.getElementById("video"),
+        'keepCameraOn': true,
+        'numFrames': time.value * 10,
+        'gifWidth': 425,
+        'gifHeight': 350,
+        'numWorkers': 6,
+        'text': text.value,
+        'fontFamily': 'Helvetica',
+        'fontSize': '36px',
+        'resizeFont': true,
+        'saveRenderingContexts': true
     },
     function(obj) {
-      if(!obj.error) {
-        webCam.style.display = "none";
-        var image = obj.image;
+        if(!obj.error) {
+            webCam.style.display = "none";
+            var image = obj.image;
 
-        newGIF = dataURItoBlob(image);
-        var urlGIF = URL.createObjectURL(newGIF);
-        var fd = new FormData(document.forms[0]);
-        fd.append("myFile", newGIF);
+            newGIF = dataURItoBlob(image);
+            var urlGIF = URL.createObjectURL(newGIF);
+            var fd = new FormData(document.forms[0]);
+            fd.append("myFile", newGIF);
 
-        saveGIF.href = urlGIF;
-        btnArray.forEach(function(btn) {
-          btn.style.opacity = 1;
-          btn.style.display = 'inline-block';
-        });
-        animatedImage = document.createElement('img');
-        animatedImage.src = image;
-        container.appendChild(animatedImage);
-      }
+            saveGIF.href = urlGIF;
+            btnArray.forEach(function(btn) {
+                btn.style.display = 'inline-block';
+                btn.disabled = false;
+            });
+            saveGIF.children[0].disabled = false;
+            animatedImage = document.createElement('img');
+            animatedImage.src = image;
+            container.appendChild(animatedImage);
+        }
     });
   });
 }
@@ -69,7 +72,13 @@ navigator.getUserMedia = navigator.getUserMedia ||
 if (navigator.getUserMedia) {
     navigator.getUserMedia({video: true}, handleVideo, videoError);
 }
+var inputTimer = document.getElementById('timer');
+inputTimer.oninput = function(){
+    var seconds = inputTimer.value;
+    timerLabel.innerText = "Timer: " + seconds + " second";
+    if (seconds > 1) timerLabel.innerText += 's';
 
+};
 function handleVideo(stream) {
     video.src = window.URL.createObjectURL(stream);
 }
