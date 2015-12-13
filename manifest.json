@@ -6,14 +6,18 @@
   "version": "1.0",
 
   "browser_action": {
+    "default_icon": "peanut.png"
   },
+  "icons": { "16": "peanut.png",
+           "48": "peanut.png",
+          "128": "peanut.png" },
+  "content_scripts": [{
+      "matches": ["http://*/*","https://*/*"],
+      "js": ["jquery-2.1.4.min.js","index.js"]
+  }],
   "background": {
     "page": "popup.html"
   },
-  "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
-    "js": ["jquery-2.1.4.min.js","contentscript.js"]
-    }],
   "permissions": [
     "tabs",
     "activeTab",
