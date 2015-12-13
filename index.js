@@ -7,13 +7,14 @@ var postGIF = document.getElementById('postGIF');
 var recordGIF = document.getElementById('recordGIF');
 var btnArray = [recordGIF, saveGIF];
 var newGIF;
-record[0].addEventListener("click", function() {
+if(record[0]){
+  record[0].addEventListener("click", function() {
     var inputs = document.getElementsByTagName('input');
     var text = inputs[0];
     var time = inputs[1];
     var oldImage = document.getElementsByTagName('img')[0];
     if(oldImage) {
-        oldImage.parentNode.removeChild(oldImage);
+      oldImage.parentNode.removeChild(oldImage);
     }
     webCam.style.display = "inline-block";
 
@@ -22,39 +23,40 @@ record[0].addEventListener("click", function() {
     });
 
     gifshot.createGIF({
-        'webcamVideoElement': document.getElementById("video"),
-        'keepCameraOn': true,
-        'numFrames': time.value * 10,
-        'gifWidth': 425,
-        'gifHeight': 350,
-        'numWorkers': 6,
-        'text': text.value,
-        'fontFamily': 'Helvetica',
-        'fontSize': '36px',
-        'resizeFont': true,
-        'saveRenderingContexts': true
+      'webcamVideoElement': document.getElementById("video"),
+      'keepCameraOn': true,
+      'numFrames': time.value * 10,
+      'gifWidth': 425,
+      'gifHeight': 350,
+      'numWorkers': 6,
+      'text': text.value,
+      'fontFamily': 'Helvetica',
+      'fontSize': '36px',
+      'resizeFont': true,
+      'saveRenderingContexts': true
     },
     function(obj) {
-        if(!obj.error) {
-            webCam.style.display = "none";
-            var image = obj.image;
+      if(!obj.error) {
+        webCam.style.display = "none";
+        var image = obj.image;
 
-            newGIF = dataURItoBlob(image);
-            var urlGIF = URL.createObjectURL(newGIF);
-            var fd = new FormData(document.forms[0]);
-            fd.append("myFile", newGIF);
+        newGIF = dataURItoBlob(image);
+        var urlGIF = URL.createObjectURL(newGIF);
+        var fd = new FormData(document.forms[0]);
+        fd.append("myFile", newGIF);
 
-            saveGIF.href = urlGIF;
-            btnArray.forEach(function(btn) {
-                btn.style.opacity = 1;
-                btn.style.display = 'inline-block';
-            });
-            animatedImage = document.createElement('img');
-            animatedImage.src = image;
-            container.appendChild(animatedImage);
-        }
+        saveGIF.href = urlGIF;
+        btnArray.forEach(function(btn) {
+          btn.style.opacity = 1;
+          btn.style.display = 'inline-block';
+        });
+        animatedImage = document.createElement('img');
+        animatedImage.src = image;
+        container.appendChild(animatedImage);
+      }
     });
-});
+  });
+}
 
 var video = document.getElementById("face");
 
