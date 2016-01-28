@@ -6,11 +6,11 @@
   "version": "1.3",
 
   "browser_action": {
-    "default_icon": "peanut.png"
+    "default_icon": "./images/peanut.png"
   },
-  "icons": { "16": "peanut.png",
-           "48": "peanut.png",
-          "128": "peanut.png" },
+  "icons": { "16": "./images/peanut.png",
+           "48": "./images/peanut.png",
+          "128": "./images/peanut.png" },
   "background": {
     "page": "popup.html"
   },
